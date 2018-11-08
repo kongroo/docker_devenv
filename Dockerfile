@@ -8,9 +8,9 @@ ENV TZ Asia/Shanghai
 ENV DEBIAN_FRONTEND noninteractive
 ARG NVM_VERSION="0.33.8" 
 
+# Copy configuration files
 COPY . /root
 COPY --from=VIM /root/.vim /root/.vim
-# Copy configuration files
 WORKDIR /root
 
 RUN apt update && apt install -y --no-install-recommends --no-install-suggests \
