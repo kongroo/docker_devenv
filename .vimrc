@@ -125,7 +125,7 @@ endfunction
 let g:ycm_python_binary_path = GetPython3()
 " let g:ycm_server_log_level = 'info'
 let g:ycm_confirm_extra_conf=0
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui=0
 " let g:ycm_collect_identifiers_from_comments_and_strings = 1
 set completeopt-=preview
@@ -212,7 +212,7 @@ let g:ale_cpp_cppcheck_options = ''
 " autocmds
 autocmd filetype python nnoremap <leader>r :w <bar> exec '!time python '.shellescape('%')<CR>
 autocmd filetype javascript nnoremap <leader>r :w <bar> exec '!time node '.shellescape('%')<CR>
-autocmd filetype cpp nnoremap <leader>r :w <bar> exec '!g++ -w -O2 -std=c++17 '.shellescape('%').' -o /tmp/'.shellescape('%:p:t:r').' && time /tmp/'.shellescape('%:p:t:r').''<CR>
+autocmd filetype cpp nnoremap <leader>r :w <bar> exec '!time g++ -w -O2 -std=c++17 '.shellescape('%').' -o /tmp/'.shellescape('%:p:t:r').' && time /tmp/'.shellescape('%:p:t:r').''<CR>
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
