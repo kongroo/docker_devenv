@@ -1,0 +1,14 @@
+apt install g++
+apt install golang
+apt install openjdk-9-jdk
+apt install fonts-noto-cjk
+~/.nvm/install.sh
+nvm install --lts
+npm install -g yarn
+npm install -g tern
+npm install -g yarn
+yarn global add @angular/cli
+np set --global packageManager=yarn
+yarn global add typescript-formatter
+yarn global add eslint
+cd .vim/bundle/YouCompleteMe && python3 install.py --go-completer --java-completer

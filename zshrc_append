@@ -1,0 +1,30 @@
+
+# color palette
+export TERM=xterm-256color vim
+
+# locale
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US:en
+export LC_ALL=en_US.UTF-8
+
+# virtualenv
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/local/bin/virtualenvwrapper.sh
+export WORKON_HOME=~/.virtualenvs
+
+# golang
+export GOPATH=~/code/go
+export PATH=$GOPATH/bin:$PATH
+export MYGO=$GOPATH/src/kongroo
+
+# proxy
+server_ip=localhost
+#server_ip=10.0.75.1
+export all_proxy="socks5://$server_ip:1080"
+
+# display
+export DISPLAY=:0
+
+# aliases
+alias duc="du -h --max-depth=1"
+alias rm="rm -i"
