@@ -1,6 +1,6 @@
-FROM kongroo/vim-ycm as VIM
+FROM kongroo/vim_ycm as VIM
 
-FROM ubuntu:bionic
+FROM ubuntu
 MAINTAINER kongroo
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en ENV LC_ALL en_US.UTF-8
