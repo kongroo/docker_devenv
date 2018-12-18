@@ -56,7 +56,6 @@ RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/
     && mkdir -p .jupyter \
     && mv jupyter_notebook_config.json .jupyter/ \
     && cat jupyter_notebook_config.py >> .jupyter/jupyter_notebook_config.py \
-    && mkdir -p notebook \
     && mkdir -p .ipython/profile_default \
     && cp -f ipython_config.py .ipython/profile_default \
     && rm ipython_config.py jupyter_notebook_config.py \
