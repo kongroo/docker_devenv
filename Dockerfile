@@ -15,7 +15,7 @@ COPY . /root
 COPY --from=VIM /root/.vim /root/.vim
 WORKDIR /root
 
-RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/apt/sources.list
+RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/apt/sources.list \
     && apt update && apt install -y --no-install-recommends --no-install-suggests \
         zsh locales tzdata git ca-certificates \
         vim astyle \
