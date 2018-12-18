@@ -7,31 +7,23 @@ ENV LANGUAGE en_US:en ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Shanghai
 ENV DEBIAN_FRONTEND noninteractive
 ARG NVM_VERSION="0.33.8" 
+# ARG UBUNTU_SOURCE="http://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
+ARG UBUNTU_SOURCE="http://mirrors.zju.edu.cn/ubuntu/"
 
 # Copy configuration files
 COPY . /root
 COPY --from=VIM /root/.vim /root/.vim
 WORKDIR /root
 
-RUN apt update && apt install -y --no-install-recommends --no-install-suggests \
-        zsh locales tzdata \
-        git ca-certificates \
-        vim \
+RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/apt/sources.list
+    && apt update && apt install -y --no-install-recommends --no-install-suggests \
+        zsh locales tzdata git ca-certificates \
+        vim astyle \
         net-tools iputils-arping iputils-ping iproute2 \
-        less \
-        zip unzip \
-        curl wget \
+        less zip unzip curl wget \
         python3 python3-pip python3-setuptools python-autopep8 flake8 \
-        #init \
-        #systemd \
-        supervisor \
-        openssh-server \
-        lrzsz \
-        astyle \
-        xauth \
-        dbus-x11 \
-        psmisc \
-        cron \
+        #init systemd \
+        supervisor openssh-server lrzsz xauth dbus-x11 psmisc cron \
     && locale-gen en_US.UTF-8 \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone \
     && dpkg-reconfigure --frontend noninteractive tzdata \
