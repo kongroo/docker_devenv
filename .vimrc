@@ -53,6 +53,7 @@ nnoremap <Leader>to :tabnew<Space>
 nnoremap <Leader>tn :tabnew<CR>
 
 " Settings
+set shell=bash \l
 set ruler
 set number
 set noshowmode
