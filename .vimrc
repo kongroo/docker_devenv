@@ -14,7 +14,7 @@ Plug 'Yggdroot/indentLine'
 "Plugin 'klen/python-mode'
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'mattn/emmet-vim', { 'for': 'javascript' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'css', 'javascript'] }
 Plug 'leafgarland/typescript-vim', { 'for': 'javascript' }
 
 " Coding
@@ -53,7 +53,7 @@ nnoremap <Leader>to :tabnew<Space>
 nnoremap <Leader>tn :tabnew<CR>
 
 " Settings
-set shell=bash\ -l
+set shell=zsh
 set ruler
 set number
 set noshowmode
