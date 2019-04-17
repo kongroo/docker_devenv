@@ -35,7 +35,7 @@ RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/
     && mv supervisord.conf /etc/supervisor/conf.d/ \
     && mv sshd.conf /etc/supervisor/conf.d/ \
     && mv cron.conf /etc/supervisor/conf.d/ \
-    && pip3 --no-cache-dir install virtualenvwrapper pysocks \
+    && pip3 --no-cache-dir install virtualenvwrapper pysocks neovim \
     # Setup oh-my-zsh
     && wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true \
     && cat zshrc_append >> .zshrc \
