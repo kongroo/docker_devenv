@@ -1,5 +1,3 @@
-FROM kongroo/vim_ycm as VIM
-
 FROM ubuntu
 MAINTAINER kongroo
 ENV LANG en_US.UTF-8
@@ -7,18 +5,18 @@ ENV LANGUAGE en_US:en ENV LC_ALL en_US.UTF-8
 ENV TZ Asia/Shanghai
 ENV DEBIAN_FRONTEND noninteractive
 ARG NVM_VERSION="0.33.8" 
+ARG LLVM_VERSION="6.0"
 # ARG UBUNTU_SOURCE="http://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
 ARG UBUNTU_SOURCE="http://mirrors.zju.edu.cn/ubuntu/"
 
 # Copy configuration files
 COPY . /root
-COPY --from=VIM /root/.vim /root/.vim
 WORKDIR /root
 
 RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/apt/sources.list \
     && apt update && apt install -y --no-install-recommends --no-install-suggests \
         zsh locales tzdata git ca-certificates \
-        vim astyle \
+        vim astyle exuberant-ctags \
         net-tools iputils-arping iputils-ping iproute2 \
         less zip unzip curl wget \
         python3 python3-pip python3-setuptools python-autopep8 flake8 \
@@ -52,6 +50,8 @@ RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/
     && rm -rf .vim/plugged/**/.git \
     && mkdir -p .vim/plugged/ultisnips/ \
     && mv mysnippets/ .vim/plugged/ultisnips/ \
+    && mkdir -p /usr/include/llvm-${LLVM_VERSION}/llvm/bits/ \
+    && mv stdc++.h /usr/include/llvm-${LLVM_VERSION}/llvm/bits/ \
     # Setup python virtualenv and jupyter
     && mkdir -p .jupyter \
     && mv jupyter_notebook_config.json .jupyter/ \
@@ -73,5 +73,4 @@ RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/
 
 EXPOSE 80 443 8888 10022
 
-# CMD ["/bin/systemd"]
 CMD ["/usr/bin/supervisord"]
