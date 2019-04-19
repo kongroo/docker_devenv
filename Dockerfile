@@ -46,8 +46,8 @@ RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/
     # Install vim plugins
     && curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
-    && vim +PlugInstall +qall \
-    && rm -rf .vim/plugged/**/.git \
+    # && vim +PlugInstall +qall \
+    # && rm -rf .vim/plugged/**/.git \
     && mkdir -p .vim/plugged/ultisnips/ \
     && mv mysnippets/ .vim/plugged/ultisnips/ \
     && mkdir -p /usr/include/llvm-${LLVM_VERSION}/llvm/bits/ \

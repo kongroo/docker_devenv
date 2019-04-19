@@ -38,9 +38,20 @@ else
 endif
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#auto_complete_start_length = 2
+let g:deoplete#enable_refresh_always = 0
+let g:deoplete#enable_smart_case = 1
 let g:deoplete#sources#clang#std='c++1z'
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" let g:deoplete#ignore_sources = {}
+" let g:deoplete#ignore_sources._ = ['buffer', 'around']
+set completeopt-=preview
 Plug 'zchee/deoplete-jedi'
 Plug 'Shougo/deoplete-clangx'
+Plug 'Shougo/echodoc.vim'
+let g:echodoc#enable_at_startup = 1
+set noshowmode
 
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=["mysnippets"]
@@ -62,8 +73,8 @@ noremap <F2> :Autoformat<CR>
 Plug 'w0rp/ale'
 let g:ale_lint_delay = 1000
 let g:ale_python_flake8_options = '--max-line-length 120'
-let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
-let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++17'
+let g:ale_c_gcc_options = '-Wall -O0 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O0 -std=c++17'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 
