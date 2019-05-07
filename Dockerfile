@@ -1,3 +1,5 @@
+FROM kongroo/vim_ycm as VIM
+
 FROM ubuntu
 MAINTAINER kongroo
 ENV LANG en_US.UTF-8
@@ -11,6 +13,7 @@ ARG UBUNTU_SOURCE="http://mirrors.zju.edu.cn/ubuntu/"
 
 # Copy configuration files
 COPY . /root
+COPY --from=VIM /root/.vim /root/.vim
 WORKDIR /root
 
 RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/apt/sources.list \

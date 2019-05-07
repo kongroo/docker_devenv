@@ -28,30 +28,52 @@ Plug 'mattn/emmet-vim', { 'for': 'javascript' }
 Plug 'leafgarland/typescript-vim', { 'for': 'javascript' }
 
 " Coding
-" Plug 'Valloric/YouCompleteMe'
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#auto_complete_delay = 0
-let g:deoplete#auto_complete_start_length = 2
-let g:deoplete#enable_refresh_always = 0
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#sources#clang#std='c++1z'
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" let g:deoplete#ignore_sources = {}
-" let g:deoplete#ignore_sources._ = ['buffer', 'around']
+Plug 'Valloric/YouCompleteMe'
+let g:ycm_auto_trigger=1
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_semantic_triggers =  {
+			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+			\ 'cs,lua,javascript': ['re!\w{2}'],
+			\ }
+let g:ycm_complete_in_comments=1
+let g:ycm_server_log_level = 'error'
+let g:ycm_confirm_extra_conf=0
+let g:ycm_global_ycm_extra_conf = '/root/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_show_diagnostics_ui=0
 set completeopt-=preview
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/deoplete-clangx'
-Plug 'Shougo/echodoc.vim'
+set completeopt-=menu,menuone
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_filetype_blacklist = {}
+nnoremap <leader>gr :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+" if has('nvim')
+"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"     Plug 'Shougo/deoplete.nvim'
+"     Plug 'roxma/nvim-yarp'
+"     Plug 'roxma/vim-hug-neovim-rpc'
+" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
+" Plug 'Shougo/deoplete-clangx', { 'for': 'cpp' }
+" " Plug 'tweekmonster/deoplete-clang2', { 'for': 'cpp' }
+" endif
+" let g:deoplete#enable_at_startup = 1
+" let g:deoplete#auto_complete_delay = 0
+" let g:deoplete#auto_complete_start_length = 2
+" " let g:deoplete#enable_refresh_always = 0
+" let g:deoplete#enable_smart_case = 1
+" let g:deoplete#sources#clang#std='c++1z'
+" " let g:deoplete#num_processes = 2
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" " let g:deoplete#ignore_sources = {}
+" " let g:deoplete#ignore_sources._ = ['buffer', 'around']
+
+set completeopt-=preview
 let g:echodoc#enable_at_startup = 1
-set noshowmode
+Plug 'Shougo/echodoc.vim'
 
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetDirectories=["mysnippets"]
@@ -68,15 +90,24 @@ Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat', { 'on': 'Autoformat' }
-noremap <F2> :Autoformat<CR>
+noremap <Tab> :Autoformat<CR>
+" noremap <Tab> :ALEFix<CR>
 
+" let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
+let b:ale_linters = {'cpp': ['g++']}
 let g:ale_lint_delay = 1000
 let g:ale_python_flake8_options = '--max-line-length 120'
 let g:ale_c_gcc_options = '-Wall -O0 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O0 -std=c++17'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+"let g:ale_fixers = {
+            "\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            "\ 'cpp': ['astyle'],
+            "\ 'java': ['google_java_format'],
+            "\ 'python': ['autopep8']
+            "\ }
 
 Plug 'mhinz/vim-signify'
 
@@ -94,7 +125,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'kannokanno/previm'
 "let g:previm_open_cmd="firefox --no-sandbox"
 
-Plug 'tyru/open-browser.vim'
+" Plug 'tyru/open-browser.vim'
 
 " File find
 Plug 'kien/ctrlp.vim', { 'on': ['CtrlP', 'CtrlPMRU'] }
@@ -107,8 +138,8 @@ let g:ctrlp_custom_ignore = {
             \ 'file': '\v\.(exe|so|dll|jpg|png|jpeg|tar|tar.gz|pyc)$',
             \ }
 
-Plug 'terryma/vim-multiple-cursors'
-Plug 'sjl/gundo.vim'
+" Plug 'terryma/vim-multiple-cursors'
+" Plug 'sjl/gundo.vim'
 call plug#end()
 filetype plugin indent on
 
@@ -141,9 +172,19 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set smarttab
+set tags=./tags;,tags
 set foldmethod=syntax
 set nofoldenable
-set tags=./tags;,tags
+
+autocmd InsertEnter * if !exists('w:last_fdm')
+            \| let w:last_fdm=&foldmethod
+            \| setlocal foldmethod=manual
+            \| endif
+autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
+            \| let &l:foldmethod=w:last_fdm
+            \| unlet w:last_fdm
+            \| endif
+
 
 " save/recover
 set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"
