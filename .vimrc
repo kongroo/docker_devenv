@@ -17,7 +17,11 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 " let g:airline_symbols.branch = ''
-
+Plug 'junegunn/rainbow_parentheses.vim'
+let g:rainbow#max_level = 16
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+let g:rainbow#blacklist = [233, 234]
+silent! au VimEnter * RainbowParentheses
 Plug 'Yggdroot/indentLine'
 
 " Language support
@@ -87,7 +91,8 @@ let g:ultisnips_javascript = {
             \ }
 
 Plug 'honza/vim-snippets'
-Plug 'jiangmiao/auto-pairs'
+" Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat', { 'on': 'Autoformat' }
 noremap <Tab> :Autoformat<CR>
