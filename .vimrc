@@ -43,7 +43,7 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_complete_in_comments=1
 let g:ycm_server_log_level = 'error'
 let g:ycm_confirm_extra_conf=0
-let g:ycm_global_ycm_extra_conf = '/root/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/.ycm_extra_conf.py'
 let g:ycm_show_diagnostics_ui=0
 set completeopt-=preview
 set completeopt-=menu,menuone
@@ -52,29 +52,6 @@ let g:ycm_filetype_blacklist = {}
 nnoremap <leader>gr :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-" if has('nvim')
-"     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"     Plug 'Shougo/deoplete.nvim'
-"     Plug 'roxma/nvim-yarp'
-"     Plug 'roxma/vim-hug-neovim-rpc'
-" Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-" Plug 'Shougo/deoplete-clangx', { 'for': 'cpp' }
-" " Plug 'tweekmonster/deoplete-clang2', { 'for': 'cpp' }
-" endif
-" let g:deoplete#enable_at_startup = 1
-" let g:deoplete#auto_complete_delay = 0
-" let g:deoplete#auto_complete_start_length = 2
-" " let g:deoplete#enable_refresh_always = 0
-" let g:deoplete#enable_smart_case = 1
-" let g:deoplete#sources#clang#std='c++1z'
-" " let g:deoplete#num_processes = 2
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" " let g:deoplete#ignore_sources = {}
-" " let g:deoplete#ignore_sources._ = ['buffer', 'around']
-
 set completeopt-=preview
 let g:echodoc#enable_at_startup = 1
 Plug 'Shougo/echodoc.vim'
@@ -107,12 +84,6 @@ let g:ale_c_gcc_options = '-Wall -O0 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O0 -std=c++17'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
-"let g:ale_fixers = {
-            "\ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            "\ 'cpp': ['astyle'],
-            "\ 'java': ['google_java_format'],
-            "\ 'python': ['autopep8']
-            "\ }
 
 Plug 'mhinz/vim-signify'
 
