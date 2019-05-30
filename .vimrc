@@ -85,6 +85,11 @@ let g:ale_cpp_gcc_options = '-Wall -O0 -std=c++17'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
 let g:ale_python_flake8_options="--ignore=E226,E402,E501"
+let g:ale_fixers = {
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'javascript': ['prettier', 'eslint'],
+            \ 'cpp': ['clang-format']
+            \ }
 
 Plug 'mhinz/vim-signify'
 
@@ -179,6 +184,7 @@ autocmd filetype python nnoremap <leader>r :w <bar> exec '!time python '.shelles
 autocmd filetype javascript nnoremap <leader>r :w <bar> exec '!time node '.shellescape('%')<CR>
 autocmd filetype cpp nnoremap <leader>r :w <bar> exec '!time g++ -w -O2 -std=c++17 '.shellescape('%').' -o /tmp/'.shellescape('%:p:t:r').' && time /tmp/'.shellescape('%:p:t:r').''<CR>
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype cpp setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype typescript setlocal ts=2 sts=2 sw=2
