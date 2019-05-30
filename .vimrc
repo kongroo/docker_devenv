@@ -37,9 +37,9 @@ let g:ycm_auto_trigger=1
 let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_semantic_triggers =  {
-			\ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
-			\ 'cs,lua,javascript': ['re!\w{2}'],
-			\ }
+            \ 'c,cpp,python,java,go,erlang,perl': ['re!\w{2}'],
+            \ 'cs,lua,javascript': ['re!\w{2}'],
+            \ }
 let g:ycm_complete_in_comments=1
 let g:ycm_server_log_level = 'error'
 let g:ycm_confirm_extra_conf=0
@@ -68,8 +68,8 @@ let g:ultisnips_javascript = {
             \ }
 
 Plug 'honza/vim-snippets'
-" Plug 'jiangmiao/auto-pairs'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat', { 'on': 'Autoformat' }
 noremap <Tab> :Autoformat<CR>
@@ -84,6 +84,7 @@ let g:ale_c_gcc_options = '-Wall -O0 -std=c99'
 let g:ale_cpp_gcc_options = '-Wall -O0 -std=c++17'
 let g:ale_c_cppcheck_options = ''
 let g:ale_cpp_cppcheck_options = ''
+let g:ale_python_flake8_options="--ignore=E226,E402,E501"
 
 Plug 'mhinz/vim-signify'
 
