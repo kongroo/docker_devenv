@@ -109,11 +109,9 @@ snippet acm "competitive programming heads" b
 using namespace std;
 using LL = long long;
 using PII = pair<int, int>;
-#define FI(i,a,b) for(int i=(a);i<=(b);++i)
-#define FD(i,b,a) for(int i=(b);i>=(a);--i)
+#define FI(i, a, b) for (int i = (a); i <= (b); ++i)
+#define FD(i, b, a) for (int i = (b); i >= (a); --i)
 #define DEBUG(x) cerr << #x << ": " << (x) << endl;
-constexpr int inv(LL x, int m) { return x > m ? inv(x % m, m) : x > 1 ? inv(m % x, m) * (m - m / x) % m : x; }
-constexpr int mpow(LL a, LL k, int m) { int r(1); for (a %= m; k; k >>= 1, a = a * a % m) if (k & 1)r = r * a % m; return r; }
 
 
 int main() {
