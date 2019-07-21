@@ -19,7 +19,7 @@ WORKDIR /root
 RUN sed -i.bak -e "s%http://archive.ubuntu.com/ubuntu/%${UBUNTU_SOURCE}%g" /etc/apt/sources.list \
     && apt update && apt install -y --no-install-recommends --no-install-suggests \
         zsh locales tzdata git ca-certificates \
-        vim clang-format exuberant-ctags \
+        vim astyle clang-format exuberant-ctags \
         net-tools iputils-arping iputils-ping iproute2 \
         less zip unzip curl wget \
         python3 python3-pip python3-setuptools python-autopep8 flake8 \

@@ -69,7 +69,6 @@ let g:ultisnips_javascript = {
 
 Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
-" Plug 'Raimondi/delimitMate'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Chiel92/vim-autoformat', { 'on': 'Autoformat' }
 noremap <Tab> :Autoformat<CR>
@@ -77,7 +76,7 @@ noremap <Tab> :Autoformat<CR>
 
 " let g:ale_completion_enabled = 1
 Plug 'w0rp/ale'
-let b:ale_linters = {'cpp': ['g++']}
+let b:ale_linters = {'cpp': ['gcc']}
 let g:ale_lint_delay = 1000
 let g:ale_python_flake8_options = '--max-line-length 120'
 let g:ale_c_gcc_options = '-Wall -O0 -std=c99'
@@ -92,6 +91,7 @@ let g:ale_fixers = {
             \ }
 
 Plug 'mhinz/vim-signify'
+Plug 'kshenoy/vim-signature'
 
 " Others
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -155,18 +155,19 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set tags=./tags;,tags
-set foldmethod=syntax
+set foldmethod=manual
 set nofoldenable
+set noswapfile
 
-autocmd InsertEnter * if !exists('w:last_fdm')
-            \| let w:last_fdm=&foldmethod
-            \| setlocal foldmethod=manual
-            \| endif
-autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
-            \| let &l:foldmethod=w:last_fdm
-            \| unlet w:last_fdm
-            \| endif
-
+" autocmd InsertEnter * if !exists('w:last_fdm')
+"             \| let w:last_fdm=&foldmethod
+"             \| setlocal foldmethod=manual
+"             \| endif
+" autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
+"             \| let &l:foldmethod=w:last_fdm
+"             \| unlet w:last_fdm
+"             \| endif
+" 
 
 " save/recover
 set sessionoptions="blank,buffers,globals,localoptions,tabpages,sesdir,folds,help,options,resize,winpos,winsize"

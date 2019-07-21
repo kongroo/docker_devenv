@@ -120,6 +120,21 @@ int main() {
 }
 endsnippet
 
+snippet inv "moduler inverse" b
+constexpr long long inv(long long x, long long m) {
+  return x > m ? inv(x % m, m) : x > 1 ? inv(m % x, m) * (m - m / x) % m : x;
+}
+endsnippet
+
+snippet mpow "moduler fast power" b
+constexpr long long mpow(long long a, long long k, long long m) {
+  long long r(1);
+  for (a %= m; k; k >>= 1, a = a * a % m)
+    if (k & 1) r = r * a % m;
+  return r;
+}
+endsnippet
+
 snippet fors "for size_t loop (fors)"
 for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
 	${VISUAL}$0
