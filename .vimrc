@@ -9,8 +9,8 @@ call plug#begin('~/.vim/plugged')
 " Appearance
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 silent! let g:airline_theme = "angr"
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
@@ -158,6 +158,7 @@ set tags=./tags;,tags
 set foldmethod=manual
 set nofoldenable
 set noswapfile
+command! Vb normal! <C-v>
 
 " autocmd InsertEnter * if !exists('w:last_fdm')
 "             \| let w:last_fdm=&foldmethod
